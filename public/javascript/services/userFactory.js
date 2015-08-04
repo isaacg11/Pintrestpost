@@ -3,7 +3,7 @@
 	angular.module('app')
 	.factory('userFactory', userFactory);
 
-	userFactory.$inject = ['$http', '$q'];
+	userFactory.$inject = ['$http', '$q', '$state'];
 
 	function userFactory($http, $q, $state) {
 		var o = {};

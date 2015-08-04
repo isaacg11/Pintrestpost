@@ -3,9 +3,9 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = ["HomeFactory","userFactory", "$state"];
+	HomeController.$inject = ["HomeFactory","userFactory", "$route", "$state"];
 
-	function HomeController(HomeFactory, userFactory, $state, $route) {
+	function HomeController(HomeFactory, userFactory, $route, $state) {
 		var vm = this;
 		vm.isLoggedIn = userFactory.status.isLoggedIn;
 		
@@ -28,6 +28,7 @@ function login() {
 	userFactory.login(vm.user).then(function(){
 		$state.go('Home');
 	});
+
 }
 
 }

@@ -8,9 +8,8 @@
 			url: '/',
 			templateUrl: 'views/Home.html',
 			controller: "HomeController"
-		}).
-		
-		state('Register',{
+		})
+		.state('Register',{
 			url:'/Register',
 			templateUrl: 'views/register.html',
 			controller:"registerCtrl"

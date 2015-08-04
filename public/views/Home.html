@@ -1,4 +1,4 @@
-<div ng-controller="HomeController as vm">
+<!-- <div ng-controller="HomeController as vm">
 	<<<<<<< HEAD
 
 	<h3><u>Enter Photo URL</u></h3>
@@ -14,7 +14,7 @@
 	<h3><u>Photos</u></h3>
 	<div class="well" ng-repeat="p in vm.photo">
 		<img src="{{p.photoURL}}"/>
-	</div>
+	</div> -->
 	=======
 	<div ng-hide="isLoggedIn()" class="loginContainer">
 		<div class="loginImage">
@@ -37,7 +37,7 @@
 
 			<div class="row">
 				<button type="button" ng-click="login()" class="btn btn-success">Log in</button>
-				<button type="button" ng-click="signup()" class="btn btn-info">Sign up</button>
+				<button type="button" ui-sref="Register" class="btn btn-info">Sign up</button>
 			</div>
 		</div>
 	</div>

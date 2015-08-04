@@ -7,11 +7,10 @@
 
 	function HomeController(HomeFactory,$route) {
 		var vm = this;
-		var photo = {};
 
 		vm.addPhoto = function () {
-			HomeFactory.addNewPhoto(vm.photoinfo).then(function(){
-				$route.reload();
+			HomeFactory.addNewPhoto(vm.photoinfo).then(function(){ //this line says to activate the func. addNewPhoto in the HomeFactory.
+				$route.reload(); //this line says to reload the page once the function is complete.
 			});
 		};
 //------------------------------------------------------------------------------------------------------------------------//		

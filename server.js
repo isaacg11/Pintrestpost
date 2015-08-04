@@ -1,9 +1,19 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose'); //this line is importing mongoose.
+var passport = require('passport'); //this line is importing passport.
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+require('./models/Users');
+require('./config/passport');
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+mongoose.connect('mongodb://localhost/pinterest'); //this line defines the collection name being sent to mongodb and creates the connection to the server.
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+var userRoutes = require('./routing/userRoutes');
+var photoRoutes = require("./routing/photoRoutes.js");
+
 var app = express();
 var port = process.env.PORT || 3000;
-var photoExpress = require("./routing/photoRoutes.js");
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -21,14 +31,15 @@ app.set('view options', {
 //middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(passport.initialize());
 
 //on homepage load, render the index page
 app.get('/', function(req, res) {
 	res.render('index');
 });
 
-
-app.use("/api", photoExpress);
+app.use("/api/Users", userRoutes);
+app.use("/api", photoRoutes);
 
 var server = app.listen(port, function() {
 	var host = server.address().address;

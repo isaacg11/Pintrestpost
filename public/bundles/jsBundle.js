@@ -6,12 +6,13 @@
 	function Config($stateProvider, $urlRouterProvider) {
 		$stateProvider.state('Home',{
 			url: '/',
-<<<<<<< HEAD
 			templateUrl: 'views/home.html',
 			controller: "HomeController"
-=======
-			templateUrl: 'views/home.html'
->>>>>>> 30abec162c7195232c983e9b174f5f8c16dbd5f9
+		}).
+		state('Register',{
+			url:'/Register',
+			templateUrl: 'views/register.html',
+			controller:"navBarController"
 		});
 		$urlRouterProvider.otherwise('/');
 	}
@@ -22,16 +23,14 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-<<<<<<< HEAD
 	HomeController.$inject = ["HomeFactory","$state"];
 
 	function HomeController(HomeFactory,$route) {
 		var vm = this;
-		var photo = {};
 
 		vm.addPhoto = function () {
-			HomeFactory.addNewPhoto(vm.photoinfo).then(function(){
-				$route.reload();
+			HomeFactory.addNewPhoto(vm.photoinfo).then(function(){ //this line says to activate the func. addNewPhoto in the HomeFactory.
+				$route.reload(); //this line says to reload the page once the function is complete.
 			});
 		};
 //------------------------------------------------------------------------------------------------------------------------//		
@@ -49,29 +48,36 @@ HomeFactory.getPhotos().then(function(data){
 (function() {
 	'use strict';
 	angular.module('app')
-	.controller('addPhotoController', addPhotoController);
+	.controller('navBarController', navBarController);
 
-	addPhotoController.$inject = ['HomeFactory',"$state"];
+	navBarController.$inject = ["userFactory","$state"];
 
-	function addPhotoController(HomeFactory, $state) {
-		var vm = this;
-		var photo = {};
+	function navBarController(userFactory,$state) {
+		var vm = this; 
+		vm.user = {}; //this line is declaring a variable 'nav.user' equal to an empty obj.
+		vm.status = userFactory.status; //this line is declaring a variable 'vm.status' equal to 'userFactory.status'
+		vm.register = register; //this line is declaring a variable 'nav.register' equal to 'register'.
+		vm.login = login; //this line is declaring a variable 'vm.login' equal to 'login'.
+		vm.logout = userFactory.logout; //this line is declaring a variable 'vm.logout' equal to 'userFactory.logout'.
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-		vm.addPhoto = function () {
-			HomeFactory.addNewPhoto(vm.photo).then(function(){
-				console.log("success");
-			});
-		};	
+function register() {
+	console.log("reached the register func. in navBarController");
+	var u = vm.user; //this line is declaring a variable 'user' equal to 'register'.
+	if(!u.username || !u.email || !u.password || !u.cpassword || !(u.password === u.cpassword )) { //this line is saying if none of the expressions are
+		return false; //true, then to return false to THE CLIENT.
 	}
+	userFactory.register(u).then(function(){ //this line says to go to the HF and activate the function 'register' by passing the data obj.'user' in the parameter.
+		$state.go('Home');//this line says that once the function is complete, go back and render the 'Home' state.
+	});
+}
+function login () {
+	userFactory.login(vm.user).then(function(){
+		$state.go('Home');
+	});
+}
 
-=======
-	HomeController.$inject = [];
-
-	function HomeController() {
-		var vm = this;
-		vm.title = 'Welcome to our Ap!';
-	}
->>>>>>> 30abec162c7195232c983e9b174f5f8c16dbd5f9
+}
 })();
 (function() {
 	'use strict';
@@ -80,14 +86,13 @@ HomeFactory.getPhotos().then(function(data){
 
 	HomeFactory.$inject = ['$http', '$q'];
 
-<<<<<<< HEAD
 
 	function HomeFactory($http, $q) {
 		var o = {};
 	//----------------------------------------------------------------------------------------------------------------------//	
 	o.addNewPhoto = function(photo) {
 		var deferred = $q.defer();
-		$http.post("/api/addPhoto", { photoURL: photo })
+		$http.post("/api/addPhoto", { photoURL: photo }) //this line says to make a post request to /api/addPhoto with {photoURL: photo} as the parameter.
 		.success(function(data){
 			deferred.resolve(data);
 		})
@@ -111,11 +116,75 @@ HomeFactory.getPhotos().then(function(data){
 			return deferred.promise;
 		};
 		//----------------------------------------------------------------------------------------------------------------------//
-=======
-	function HomeFactory($http, $q) {
-		var o = {};
-		
->>>>>>> 30abec162c7195232c983e9b174f5f8c16dbd5f9
 		return o;
 	}
+})();
+(function() {
+	'use strict';
+	angular.module('app')
+	.factory('userFactory', userFactory);
+
+	userFactory.$inject = ['$http', '$q'];
+
+	function userFactory($http, $q) {
+		var o = {};
+		o.status = {};
+		if(getToken()) {
+			o.status.isLoggedIn = true;
+			o.status.username = getUsername();
+		}
+		o.setToken = setToken;
+		o.getToken = getToken;
+		o.removeToken = removeToken;
+		o.register = register;
+		o.login = login;
+		o.logout = logout;
+		return o;
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function register(user) {
+	var q = $q.defer();
+	$http.post('/api/Users/Register', user).success(function(res){ //this line says to send a post request to '/api/Users/Register' with the data obj. 'user' to THE SERVER.
+		setToken(res.token); // this line says to set the authentication token on the response obj. and assign it the property name of 'token'.
+		o.status.isLoggedIn = true; //this line says to make the status of the user to 'isLoggedIn' equal to true.
+		q.resolve(); //this line says to go back to the navBarController and activate the first property '.then'.
+	}).error(function(res) {
+		console.error(res);
+	});
+	return q.promise; //this line turns the function call in the navBarController into an object and to activate when the q.whatever method is used.
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function login(user) {
+	var u = { username: user.username.toLowerCase(), password: user.password};
+	var q = $q.defer();
+	$http.post('/api/Users/Login', u).success(function(res) {
+		setToken(res.token);
+		o.status.isLoggedIn = true;
+		q.resolve();
+	});
+	return q.promise;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function logout() {
+	o.status.isLoggedIn = false;
+	removeToken();
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function setToken(token) {
+	localStorage.setItem('token', token);
+	o.status.username = getUsername();
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function getToken() {
+	return localStorage['token'];
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//function getUsername() {
+	function removeToken() {
+		localStorage.removeItem('token');
+		o.status.username = null;
+	}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function getUsername() {
+	return JSON.parse(atob(getToken().split('.')[1])).username;
+}
+}
 })();

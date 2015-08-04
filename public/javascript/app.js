@@ -8,6 +8,11 @@
 			url: '/',
 			templateUrl: 'views/home.html',
 			controller: "HomeController"
+		}).
+		state('Register',{
+			url:'/Register',
+			templateUrl: 'views/register.html',
+			controller:"navBarController"
 		});
 		$urlRouterProvider.otherwise('/');
 	}

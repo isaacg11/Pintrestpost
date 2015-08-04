@@ -7,9 +7,9 @@ router.get("/", function(req, res) {
 	console.log(photos);
 });
 //----------------------------------------------------------------------------------------------------------------------//
-router.post('/addPhoto', function(req, res){
+router.post('/addPhoto', function(req, res){ 
 	console.log(req);
-	photos.push(req.body);
-	res.send(photos);
+	photos.push(req.body); //this line says to push the request body object into the array "photos".
+	res.send(photos); //this line says to send the 'photos' array into the
 });
 module.exports = router;

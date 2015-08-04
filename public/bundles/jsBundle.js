@@ -6,8 +6,12 @@
 	function Config($stateProvider, $urlRouterProvider) {
 		$stateProvider.state('Home',{
 			url: '/',
+<<<<<<< HEAD
 			templateUrl: 'views/home.html',
 			controller: "HomeController"
+=======
+			templateUrl: 'views/home.html'
+>>>>>>> 30abec162c7195232c983e9b174f5f8c16dbd5f9
 		});
 		$urlRouterProvider.otherwise('/');
 	}
@@ -18,6 +22,7 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
+<<<<<<< HEAD
 	HomeController.$inject = ["HomeFactory","$state"];
 
 	function HomeController(HomeFactory,$route) {
@@ -59,6 +64,14 @@ HomeFactory.getPhotos().then(function(data){
 		};	
 	}
 
+=======
+	HomeController.$inject = [];
+
+	function HomeController() {
+		var vm = this;
+		vm.title = 'Welcome to our Ap!';
+	}
+>>>>>>> 30abec162c7195232c983e9b174f5f8c16dbd5f9
 })();
 (function() {
 	'use strict';
@@ -67,6 +80,7 @@ HomeFactory.getPhotos().then(function(data){
 
 	HomeFactory.$inject = ['$http', '$q'];
 
+<<<<<<< HEAD
 
 	function HomeFactory($http, $q) {
 		var o = {};
@@ -97,6 +111,11 @@ HomeFactory.getPhotos().then(function(data){
 			return deferred.promise;
 		};
 		//----------------------------------------------------------------------------------------------------------------------//
+=======
+	function HomeFactory($http, $q) {
+		var o = {};
+		
+>>>>>>> 30abec162c7195232c983e9b174f5f8c16dbd5f9
 		return o;
 	}
 })();

@@ -15,7 +15,6 @@
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 function register() {
-	console.log("reached the register func. in navBarController");
 	var u = vm.user; //this line is declaring a variable 'user' equal to 'register'.
 	if(!u.username || !u.email || !u.password || !u.cpassword || !(u.password === u.cpassword )) { //this line is saying if none of the expressions are
 		return false; //true, then to return false to THE CLIENT.
@@ -24,9 +23,10 @@ function register() {
 		$state.go('Home');//this line says that once the function is complete, go back and render the 'Home' state.
 	});
 }
-function login () {
+function login() {
+	console.log("reached the login func. in navBarController");
 	userFactory.login(vm.user).then(function(){
-		$state.go('Home');
+		$state.go('Photo');
 	});
 }
 

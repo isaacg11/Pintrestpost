@@ -6,8 +6,13 @@
 	function Config($stateProvider, $urlRouterProvider) {
 		$stateProvider.state('Home',{
 			url: '/',
-			templateUrl: 'views/home.html',
-			controller: "HomeController"
+			templateUrl: 'views/login.html',
+			controller: "navBarController"
+		}).
+		state('Photo', {
+			url:'/Photo',
+			templateUrl:'views/Home.html',
+			controller:"HomeController"
 		}).
 		state('Register',{
 			url:'/Register',

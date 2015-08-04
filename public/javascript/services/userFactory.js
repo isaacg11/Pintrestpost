@@ -5,7 +5,7 @@
 
 	userFactory.$inject = ['$http', '$q'];
 
-	function userFactory($http, $q) {
+	function userFactory($http, $q, $state) {
 		var o = {};
 		o.status = {};
 		if(getToken()) {
@@ -48,7 +48,7 @@ function logout() {
 	removeToken();
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function setToken(token) {
+function setToken(token){
 	localStorage.setItem('token', token);
 	o.status.username = getUsername();
 }

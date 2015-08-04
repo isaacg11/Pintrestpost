@@ -3,10 +3,13 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = ["HomeFactory","$state"];
+	HomeController.$inject = ["HomeFactory","userFactory", "$state"];
 
-	function HomeController(HomeFactory,$route) {
+	function HomeController(HomeFactory, userFactory, $state, $route) {
 		var vm = this;
+		vm.isLoggedIn = userFactory.status.isLoggedIn;
+		
+		vm.login = login;//this line is declaring a variable 'vm.login' equal to 'login'.
 
 		vm.addPhoto = function () {
 			HomeFactory.addNewPhoto(vm.photoinfo).then(function(){ //this line says to activate the func. addNewPhoto in the HomeFactory.
@@ -20,6 +23,12 @@ HomeFactory.getPhotos().then(function(data){
 });
 //------------------------------------------------------------------------------------------------------------------------//
 
+function login() {
+	
+	userFactory.login(vm.user).then(function(){
+		$state.go('Home');
+	});
+}
 
 }
 

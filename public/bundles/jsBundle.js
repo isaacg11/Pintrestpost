@@ -6,16 +6,14 @@
 	function Config($stateProvider, $urlRouterProvider) {
 		$stateProvider.state('Home',{
 			url: '/',
-			templateUrl: 'views/home.html',
+			templateUrl: 'views/Home.html',
 			controller: "HomeController"
-<<<<<<< HEAD
-=======
 		}).
+		
 		state('Register',{
 			url:'/Register',
 			templateUrl: 'views/register.html',
-			controller:"navBarController"
->>>>>>> 84aba29d3cbddadfa7b41a115451bcf898a05c53
+			controller:"registerCtrl"
 		});
 		$urlRouterProvider.otherwise('/');
 	}
@@ -26,10 +24,13 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = ["HomeFactory","$state"];
+	HomeController.$inject = ["HomeFactory","userFactory", "$state"];
 
-	function HomeController(HomeFactory,$route) {
+	function HomeController(HomeFactory, userFactory, $state, $route) {
 		var vm = this;
+		vm.isLoggedIn = userFactory.status.isLoggedIn;
+		
+		vm.login = login;//this line is declaring a variable 'vm.login' equal to 'login'.
 
 		vm.addPhoto = function () {
 			HomeFactory.addNewPhoto(vm.photoinfo).then(function(){ //this line says to activate the func. addNewPhoto in the HomeFactory.
@@ -43,44 +44,44 @@ HomeFactory.getPhotos().then(function(data){
 });
 //------------------------------------------------------------------------------------------------------------------------//
 
+function login() {
+	
+	userFactory.login(vm.user);
+}
+}
 
 }
 
 
 })();
-(function(){
+(function() {
 	'use strict';
 	angular.module('app')
-	.controller('NavCtrl', NavCtrl);
+	.controller('navbarCtrl', navbarCtrl);
 
-	NavCtrl.$inject = ['UserFactory', '$state'];
+	navbarCtrl.$inject = ['userFactory', '$state'];
 
-	function NavCtrl(UserFactory, $state){
-		var vm=this;
-		vm.user={};
-		vm.status = UserFactory.status;
-		vm.logout = UserFactory.logout;
-
+	function navbarCtrl(userFactory, $state) {
+		var vm = this;
+		vm.user = {};
+		vm.status = userFactory.status;
+		vm.logout = userFactory.logout;
 	}
 })();
 (function() {
 	'use strict';
 	angular.module('app')
-	.controller('navBarController', navBarController);
+	.controller('registerCtrl', registerCtrl);
 
-	navBarController.$inject = ["userFactory","$state"];
+	registerCtrl.$inject = ["userFactory","$state"];
 
-	function navBarController(userFactory,$state) {
+	function registerCtrl(userFactory,$state) {
 		var vm = this; 
 		vm.user = {}; //this line is declaring a variable 'nav.user' equal to an empty obj.
 		vm.status = userFactory.status; //this line is declaring a variable 'vm.status' equal to 'userFactory.status'
 		vm.register = register; //this line is declaring a variable 'nav.register' equal to 'register'.
-		vm.login = login; //this line is declaring a variable 'vm.login' equal to 'login'.
-		vm.logout = userFactory.logout; //this line is declaring a variable 'vm.logout' equal to 'userFactory.logout'.
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
 function register() {
-	console.log("reached the register func. in navBarController");
 	var u = vm.user; //this line is declaring a variable 'user' equal to 'register'.
 	if(!u.username || !u.email || !u.password || !u.cpassword || !(u.password === u.cpassword )) { //this line is saying if none of the expressions are
 		return false; //true, then to return false to THE CLIENT.
@@ -89,16 +90,10 @@ function register() {
 		$state.go('Home');//this line says that once the function is complete, go back and render the 'Home' state.
 	});
 }
-function login () {
-	userFactory.login(vm.user).then(function(){
-		$state.go('Home');
-	});
-}
 
-<<<<<<< HEAD
-=======
+
+
 }
->>>>>>> 84aba29d3cbddadfa7b41a115451bcf898a05c53
 })();
 (function() {
 	'use strict';
@@ -147,7 +142,7 @@ function login () {
 
 	userFactory.$inject = ['$http', '$q'];
 
-	function userFactory($http, $q) {
+	function userFactory($http, $q, $state) {
 		var o = {};
 		o.status = {};
 		if(getToken()) {
@@ -190,7 +185,7 @@ function logout() {
 	removeToken();
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function setToken(token) {
+function setToken(token){
 	localStorage.setItem('token', token);
 	o.status.username = getUsername();
 }

@@ -7,7 +7,6 @@ var jwt = require('express-jwt'); //this line imports the Express-jwt
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 router.post("/Register", function(req, res, next){ //this line activates the function when a user sends a post request to '/Register'.
-	console.log('hit the register route');
 	var user = new User(); //this line declares a variable 'user' equal to the object constructor 'new User()'; NOTE ---> 'User' is connected to the mongoose model.
 	user.username = req.body.username; //this line declares a variable 'user.username' and makes it equal to the request body's username property (MONGODB)
 	user.email = req.body.email; //this line declares a variable 'user.email' and makes it equal to the request body's email property. (MONGODB)
@@ -20,6 +19,7 @@ router.post("/Register", function(req, res, next){ //this line activates the fun
 });
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 router.post('/Login', function(req, res, next) {
+	console.log("reaching the route");
 	if(!req.body.username || !req.body.password) return res.status(400).send("Please fill out every field");
 	passport.authenticate('local', function(err, user, info) {
 		if(err) return next(err);

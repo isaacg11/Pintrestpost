@@ -1,20 +1,20 @@
 
 
-<div ng-controller="navBarController as nav">
+<div ng-controller="registerCtrl as reg">
 
-  <form class="well container" ng-submit="nav.register()">
+  <form class="well container" ng-submit="reg.register()">
     <div class="form-group">
-      <input class="form-control" placeholder="Username..." ng-model="nav.user.username" required />
+      <input class="form-control" placeholder="Username..." ng-model="reg.user.username" required />
     </div>
     <div class="form-group">
-      <input class="form-control" placeholder="Email..." ng-model="nav.user.email" type="email" required />
+      <input class="form-control" placeholder="Email..." ng-model="reg.user.email" type="email" required />
     </div>
     <div class="form-group">
-      <input class="form-control" type="password" placeholder="Password..." ng-model="nav.user.password" required />
+      <input class="form-control" type="password" placeholder="Password..." ng-model="reg.user.password" required />
     </div>
     <div class="form-group">
-      <input class="form-control" type="password" placeholder="Confirm Password..." ng-model="nav.user.cpassword" required />
+      <input class="form-control" type="password" placeholder="Confirm Password..." ng-model="reg.user.cpassword" required />
     </div>
-    <button type="submit" class="btn btn-info" ng-disabled="!nav.user.username || !nav.user.email || !nav.user.password || !nav.user.cpassword || !(nav.user.password === nav.user.cpassword)">Submit</button>
+    <button type="submit" class="btn btn-info" ng-disabled="!reg.user.username || !reg.user.email || !reg.user.password || !reg.user.cpassword || !(reg.user.password === reg.user.cpassword)">Submit</button>
   </form>
 </div>

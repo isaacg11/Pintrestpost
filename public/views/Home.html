@@ -1,22 +1,7 @@
 <div ng-controller="HomeController as vm">
-	<<<<<<< HEAD
-
-	<h3><u>Enter Photo URL</u></h3>
-
-	<form class="well" ng-submit="vm.addPhoto()">
-
-		<input type="text" class="form-control" ng-model="vm.photoinfo" placeholder="URL..">
-
-		<button class="btn btn-info">Submit</button>
-
-	</form>
-	<br />
-	<h3><u>Photos</u></h3>
-	<div class="well" ng-repeat="p in vm.photo">
-		<img src="{{p.photoURL}}"/>
-	</div>
-	=======
-	<div ng-hide="isLoggedIn()" class="loginContainer">
+	
+	<!-- this will hide when the user is logged in -->
+	<!-- <div ng-hide="isLoggedIn()" class="loginContainer">
 		<div class="loginImage">
 			<div class="header">
 				<h1>Linkterest</h1>
@@ -25,11 +10,11 @@
 			<div class="loginForm">
 				<form name="form" ng-submit="decide(form)" novalidate required>
 					<div class="form-group">
-						<input type="email" class="form-control" placeholder="email" ng-model="vm.user.email" required >
+						<input type="email" class="form-control userinput" placeholder="email" ng-model="vm.user.email" required >
 					</div>
 
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="password" ng-model="vm.user.password" required >
+						<input type="password" class="form-control userinput" placeholder="password" ng-model="vm.user.password" required >
 					</div>
 				</form>
 			</div>
@@ -40,7 +25,55 @@
 				<button type="button" ng-click="signup()" class="btn btn-info">Sign up</button>
 			</div>
 		</div>
+	</div> -->
+
+	<!-- only show below if the user is logged in -->
+	<div ng-show="isLoggedIn()">
+		<!-- Nav bar here -->
+		<div ng-controller="NavbarCtrl as nav">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" ui-sref="Home">Home</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a ui-sref="Profile">Profile <span class="sr-only">(current)</span></a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li ng-show="!nav.status.isLoggedIn"><a ui-sref="Setting">Setting</a></li>
+							<li ng-show="nav.status.isLoggedIn"><a ng-click="nav.logout()">Logout</a></li>
+							<li ng-show="nav.status.username"><a>{{nav.status.username}}</a></li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+		</div>
+
+		<!-- picture body here -->
+		<h3><u>Enter Photo URL</u></h3>
+
+		<form ng-submit="vm.addPhoto()" class="form-inline">
+			<div class="form-group">
+				<input type="text" class="form-control" id="imginput" ng-model="vm.photoinfo" placeholder="IMAGE URL ..."> 
+			</div>
+			<button type="submit" id="submitbutton" class="btn btn-info">Submit</button>
+
+		</form>
+
+		<br />
+		<h3><u>Photos</u></h3>
+		<div class="well" ng-repeat="p in vm.photo">
+			<img src="{{p.photoURL}}"/>
+		</div>
 	</div>
-
-
 </div>

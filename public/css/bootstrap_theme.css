@@ -2921,9 +2921,7 @@ select[multiple].input-lg {
     vertical-align: middle;
   }
   .form-inline .form-control {
-    display: inline-block;
-    width: auto;
-    vertical-align: middle;
+    
   }
   .form-inline .form-control-static {
     display: inline-block;
@@ -2938,7 +2936,7 @@ select[multiple].input-lg {
     width: auto;
   }
   .form-inline .input-group > .form-control {
-    width: 100%;
+    width: 300px;
   }
   .form-inline .control-label {
     margin-bottom: 0;

@@ -3,6 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 3000;
+var photoExpress = require("./routing/photoRoutes.js");
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +26,9 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
 	res.render('index');
 });
+
+
+app.use("/api", photoExpress);
 
 var server = app.listen(port, function() {
 	var host = server.address().address;

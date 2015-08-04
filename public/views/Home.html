@@ -1,3 +1,17 @@
 <div ng-controller="HomeController as vm">
-	<h1>{{vm.title}}</h1>
+
+	<h3><u>Enter Photo URL</u></h3>
+
+	<form class="well" ng-submit="vm.addPhoto()">
+
+		<input type="text" class="form-control" ng-model="vm.photoinfo" placeholder="URL..">
+
+		<button class="btn btn-info">Submit</button>
+
+	</form>
+	<br />
+	<h3><u>Photos</u></h3>
+	<div class="well" ng-repeat="p in vm.photo">
+		<img src="{{p.photoURL}}"/>
+	</div>
 </div>

@@ -2,7 +2,7 @@
 <div ng-controller="HomeController as vm">
 	
 	<!-- this will hide when the user is logged in -->
-	<div ng-hide="vm.isLoggedIn" class="loginContainer">
+	<div ng-hide="vm.status.isLoggedIn" class="loginContainer">
 		<div class="loginImage">
 			<div class="header">
 				<h1>Linkterest</h1>
@@ -20,7 +20,7 @@
 					<p class="help-block"></p>
 
 					<div class="row">
-						<button type="submit" class="btn btn-success">Log in</button>
+						<button  type="submit" class="btn btn-success">Log in</button>
 						<button type="button" ui-sref="Register" class="btn btn-info">Sign up</button>
 					</div>
 				</form>
@@ -29,7 +29,7 @@
 	</div>
 
 	<!-- only show below if the user is logged in -->
-	<div ng-show="vm.isLoggedIn">
+	<div ng-show="vm.status.isLoggedIn">
 		<!-- Nav bar here -->
 		<div ng-controller="navbarCtrl as nav">
 			<nav class="navbar navbar-default">

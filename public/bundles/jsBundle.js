@@ -23,20 +23,18 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = ["HomeFactory","userFactory", "$route", "$state"];
+	HomeController.$inject = ["HomeFactory","userFactory", "$state"];
 
-<<<<<<< HEAD
-	function HomeController(HomeFactory, userFactory, $route, $state) {
-=======
 	function HomeController(HomeFactory, userFactory, $state) {
->>>>>>> 1c0731bad6b39d4efcc2197cdd450cd872073e8b
 		var vm = this;
+		vm.photo = [];
 		vm.status = userFactory.status;
 		vm.user = {};
 		vm.login = login;//this line is declaring a variable 'vm.login' equal to 'login'.
 		vm.addPhoto = function () {
-			HomeFactory.addNewPhoto(vm.photoinfo).then(function(){ //this line says to activate the func. addNewPhoto in the HomeFactory.
-				$route.reload(); //this line says to reload the page once the function is complete.
+			HomeFactory.addNewPhoto(vm.photoinfo).then(function(data){ //this line says to activate the func. addNewPhoto in the HomeFactory.
+				console.log("posted photo"); //this line says to reload the page once the function is complete.
+				vm.photo.push(data);
 			});
 		};
 		//------------------------------------------------------------------------------------------------------------------------//		
@@ -45,21 +43,11 @@
 		});
 		//------------------------------------------------------------------------------------------------------------------------//
 
-<<<<<<< HEAD
-function login() {
-	
-	userFactory.login(vm.user).then(function(){
-		$state.go('Home');
-	});
-
-}
-=======
 		function login() {
 			userFactory.login(vm.user).then(function(){
 				$state.go('Home');
 			});
 		}
->>>>>>> 1c0731bad6b39d4efcc2197cdd450cd872073e8b
 
 	}
 
@@ -133,7 +121,6 @@ function register() {
 			var deferred = $q.defer();
 			$http.get("/api")
 			.success(function(data){
-				console.log(data);
 				deferred.resolve(data);
 			})
 			.error(function(data){

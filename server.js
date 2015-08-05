@@ -5,6 +5,7 @@ var mongoose = require('mongoose'); //this line is importing mongoose.
 var passport = require('passport'); //this line is importing passport.
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 require('./models/Users');
+require('./models/Photos');
 require('./config/passport');
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 mongoose.connect('mongodb://localhost/pinterest'); //this line defines the collection name being sent to mongodb and creates the connection to the server.

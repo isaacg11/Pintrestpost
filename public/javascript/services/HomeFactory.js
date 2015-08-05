@@ -25,7 +25,6 @@
 			var deferred = $q.defer();
 			$http.get("/api")
 			.success(function(data){
-				console.log(data);
 				deferred.resolve(data);
 			})
 			.error(function(data){

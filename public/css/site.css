@@ -99,13 +99,27 @@
 	z-index: -10;
 }
 
-.image-container {
-	display: inline-block;
-	position: relative;
-	width: 319px;
-	margin-bottom: 20px;
+
+.picContainer {
+	-moz-column-count: 4;
+	-moz-column-gap: 10px;
+	-webkit-column-count: 4;
+	-webkit-column-gap: 10px;
+	column-count: 4;
+	column-gap: 10px;
+	height: auto;
+	display: block;
+	width: 100%;
+	padding: 0;
+
 }
 
+
+
+#everyimg {
+	margin-bottom: 20px;
+	width: 100%;
+}
 
 
 /*div#masonry {

@@ -48,39 +48,41 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li ng-show="nav.status.isLoggedIn"><a id="google" href="https://www.google.com/imghp?hl=en&tab=wi&ei=p0fCVaurGMePoQSUmIuAAQ&ved=0CBUQqi4oAQ">Search Images</a>
-							</li>
-							<li ng-show="nav.status.isLoggedIn"><a ng-click="nav.logout()">Logout</a></li>
-							<li ng-show="nav.status.username"><a>{{nav.status.username}}</a></li>
-						</ul>
-					</div><!-- /.navbar-collapse -->
-				</div><!-- /.container-fluid -->
-			</nav>
-		</div>
-
-		<!-- picture body here -->
-		<div class="picpageimg"></div>
-		<h3><u>Enter Photo URL</u></h3>
-
-		<form ng-submit="vm.addPhoto()" class="form-inline">
-			<div class="form-group">
-				<input type="text" class="form-control" id="imginput" ng-model="vm.photoinfo" placeholder="IMAGE URL ...">
+							<li ng-show="nav.status.isLoggedIn"><a target="_blank" id="google" href="https://www.google.com/imghp?hl=en&tab=wi&ei=p0fCVaurGMePoQSUmIuAAQ&ved=0CBUQqi4oAQ">Google Images</a>
+								<li ng-show="nav.status.isLoggedIn"><a target="_blank" id="Facebook" href="https://www.facebook.com/?stype=lo&jlou=AfcmdWB2DA7Qg6_wvfQ3-jLjXcpDLG_E5oTRi9Yqu7k18ZE1vPCItAqTC4DdOYBvCv_dJpCvFmwxjtK_vfSUW1347COSzxC42GalB8RUSakKpw&smuh=2052&lh=Ac_bh3WwabqrE9kl">Facebook Images</a>
+								</li>
+								<li ng-show="nav.status.isLoggedIn"><a ng-click="nav.logout()">Logout</a></li>
+								<li ng-show="nav.status.username"><a>{{nav.status.username}}</a></li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</nav>
 			</div>
-			<button type="submit" id="submitbutton" class="btn btn-info">Submit</button>
-		</form>
 
-		<h3><u>Photos</u></h3>
-		<div class="imgRow">
-			<div class="col-sm-3 image-container " ng-repeat="p in vm.photo">
-				<img class="img-responsive img-rounded" ng-src="{{p.photoURL}}"/>
-				<p></p>
-				<textarea></textarea>
-				<br />
-				<button ng-click="vm.deletePhoto(p)" class="btn btn-danger btn-xs">Remove</button>
-				<br />
-				<br />
+			<!-- picture body here -->
+			<div class="picpageimg"></div>
+			<h3 align="center"><u>Enter Photo URL</u></h3>
+
+			<form ng-submit="vm.addPhoto()" class="form-inline">
+				<div class="form-group">
+					<input type="text" class="form-control" id="imginput" ng-model="vm.photoinfo" placeholder="IMAGE URL ...">
+				</div>
+				<button type="submit" id="submitbutton" class="btn btn-info">Submit</button>
+			</form>
+			<br />
+			<br />
+			<div id="masonry" class="imgRow">
+				<div class="col-sm-4 image-container " ng-repeat="p in vm.photo">
+					<img id="img" class="img-responsive img-rounded" ng-src="{{p.photoURL}}"/>
+					<p></p>
+
+					<textarea></textarea>
+					<br />
+					<button ng-click="vm.deletePhoto(p)" class="btn btn-danger btn-xs">Remove</button>
+					<br />
+					<br />
+				</div>
 			</div>
 		</div>
-	</div>
 
 

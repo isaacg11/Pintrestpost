@@ -1,15 +1,24 @@
 var express = require("express");
 var router = express.Router();
-var photos =[];
-//----------------------------------------------------------------------------------------------------------------------//
+var mongoose = require('mongoose');
+var Photo = mongoose.model('Photo');
+//--------------------------------------------------------------------------------------------------------------------//
 router.get("/", function(req, res) {
-	res.send(photos);
-	console.log(photos);
+	Photo.find(function(err, photos) {
+		if(err) return next(err);
+		res.send(photos);
+	});
 });
 //----------------------------------------------------------------------------------------------------------------------//
-router.post('/addPhoto', function(req, res){ 
-	console.log(req);
-	photos.push(req.body); //this line says to push the request body object into the array "photos".
-	res.send(photos); //this line says to send the 'photos' array into the
+router.post('/addPhoto', function(req, res, next){ 
+	var photo = new Photo(req.body);
+	photo.save(function(err, photo) {
+		if(err) return next(err);
+		res.send(photo);
+	});
+});
+
+router.use(function(err, req, res, next) {
+	res.status(400).send(err);
 });
 module.exports = router;

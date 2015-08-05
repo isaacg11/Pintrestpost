@@ -70,13 +70,19 @@
 				<button type="submit" id="submitbutton" class="btn btn-info">Submit</button>
 			</form>
 
+
 			<br />
 			
 			<div ng-repeat="p in vm.photo">
 				<img class="img-responsive" src="{{p.photoURL}}"/>
 			</div>
+
+			<br />
+			<h3><u>Photos</u></h3>
+			<div class="well" ng-repeat="p in vm.photo">
+				<img ng-src="{{p.photoURL}}"/>
+			</div>
 		</div>
 	</div>
-</div>
 
 

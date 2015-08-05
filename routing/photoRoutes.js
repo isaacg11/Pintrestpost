@@ -18,11 +18,7 @@ router.post('/deletePhoto/:photo', function(req, res, next) {
 		else res.send("Photo deleted");
 	});
 });
-//--------------------------------------------------------------------------------------------------------------------//
-// router.get("/Photo/:photo", function(req, res) {
-// 	res.send(req.photo);
 
-// });
 //----------------------------------------------------------------------------------------------------------------------//
 router.get('/', function(req, res, next) {
 	var query = Photo.find({dateDeleted:null});

@@ -100,6 +100,7 @@
 }
 
 
+<<<<<<< HEAD
 .picContainer {
 	-moz-column-count: 4;
 	-moz-column-gap: 10px;
@@ -112,6 +113,13 @@
 	width: 100%;
 	padding: 0;
 
+=======
+.image-container {
+	display: inline-block;
+	position: relative;
+	width: 319px;
+	margin-bottom: 20px;
+>>>>>>> 4df7b1212b9af7d33775d45f953f3daaef653076
 }
 
 

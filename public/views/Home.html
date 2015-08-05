@@ -10,16 +10,16 @@
 
 			<div class="loginForm">
 				<form ng-submit="vm.login()" novalidate>
-					<div class="form-group">
+					<div class="form-group userinput">
 						<input class="form-control" placeholder="username.." ng-model="vm.user.username" required >
 					</div>
 
-					<div class="form-group">
+					<div class="form-group userinput">
 						<input class="form-control" type="password" placeholder="password.." ng-model="vm.user.password" required >
 					</div>
 					<p class="help-block"></p>
 
-					<div class="row">
+					<div class="row twobtns">
 						<button  type="submit" class="btn btn-success">Log in</button>
 						<button type="button" ui-sref="Register" class="btn btn-info">Sign up</button>
 					</div>
@@ -51,9 +51,8 @@
 							<li class="active"><a ui-sref="Profile">Profile <span class="sr-only">(current)</span></a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li ng-show="!nav.status.isLoggedIn"><a ui-sref="Setting">Setting</a></li>
-							<li ng-show="nav.status.isLoggedIn"><a ng-click="nav.logout()">Logout</a></li>
-							<li ng-show="nav.status.username"><a>{{nav.status.username}}</a></li>
+							<li ng-show="nav.status.isLoggedIn"><a style="cursor:pointer" ng-click="nav.logout()">Logout</a></li>
+							<li ng-show="nav.status.username"><a style="cursor:default">{{nav.status.username}}</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
@@ -61,24 +60,23 @@
 		</div>
 
 		<!-- picture body here -->
-		<h3><u>Enter Photo URL</u></h3>
+		<div class="picpageimg">
+			<h3><u>Enter Photo URL</u></h3>
 
-		<form ng-submit="vm.addPhoto()" class="form-inline">
-			<div class="form-group">
-				<input type="text" class="form-control" id="imginput" ng-model="vm.photoinfo" placeholder="IMAGE URL ..."> 
+			<form ng-submit="vm.addPhoto()" class="form-inline">
+				<div class="form-group">
+					<input type="text" class="form-control" id="imginput" ng-model="vm.photoinfo" placeholder="IMAGE URL ...">
+				</div>
+				<button type="submit" id="submitbutton" class="btn btn-info">Submit</button>
+			</form>
+
+			<br />
+			
+			<div ng-repeat="p in vm.photo">
+				<img class="img-responsive" src="{{p.photoURL}}"/>
 			</div>
-			<button type="submit" id="submitbutton" class="btn btn-info">Submit</button>
-
-		</form>
-
-		<br />
-		<h3><u>Photos</u></h3>
-		<div class="well" ng-repeat="p in vm.photo">
-			<img src="{{p.photoURL}}"/>
 		</div>
 	</div>
-	
-
 </div>
 
 

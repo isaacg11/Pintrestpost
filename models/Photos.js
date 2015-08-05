@@ -4,6 +4,10 @@ var photoSchema = new mongoose.Schema({
 	photoURL: {
 		type: String,
 		required: true
+	},
+	dateDeleted: {
+		type: Date,
+		default: null
 	}
 });
 

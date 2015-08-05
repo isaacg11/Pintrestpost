@@ -31,6 +31,11 @@
 		vm.status = userFactory.status;
 		vm.user = {};
 		vm.login = login;//this line is declaring a variable 'vm.login' equal to 'login'.
+		vm.deletePhoto = function(photo) {
+			HomeFactory.deletePhoto(photo).then(function(data){
+				console.log(data);
+			});;
+		//------------------------------------------------------------------------------------------------------------------------//
 		vm.addPhoto = function () {
 			HomeFactory.addNewPhoto(vm.photoinfo).then(function(data){ //this line says to activate the func. addNewPhoto in the HomeFactory.
 				console.log("posted photo"); //this line says to reload the page once the function is complete.
@@ -42,7 +47,7 @@
 			vm.photo = data;
 		});
 		//------------------------------------------------------------------------------------------------------------------------//
-
+		
 		function login() {
 			userFactory.login(vm.user).then(function(){
 				$state.go('Home');
@@ -104,11 +109,14 @@ function register() {
 
 	function HomeFactory($http, $q) {
 		var o = {};
+		// o.deletePhoto = deletePhoto; //--->>>MIXES VIEWS TOGETHER..??
+		o.photos =[];
 	//----------------------------------------------------------------------------------------------------------------------//	
 	o.addNewPhoto = function(photo) {
 		var deferred = $q.defer();
 		$http.post("/api/addPhoto", { photoURL: photo }) //this line says to make a post request to /api/addPhoto with {photoURL: photo} as the parameter.
 		.success(function(data){
+			o.photos.push(photo);
 			deferred.resolve(data);
 		})
 		.error(function(data){
@@ -117,19 +125,24 @@ function register() {
 		return deferred.promise;
 	};
 		//----------------------------------------------------------------------------------------------------------------------//
+		o.deletePhoto = function(photo){
+			var deferred = $q.defer();
+			$http.post('/api/deletePhoto/'+ photo._id).success(function(res) {
+				deferred.resolve(o.photos);
+			});
+			return deferred.promise;
+		};
+
+		//----------------------------------------------------------------------------------------------------------------------//
 		o.getPhotos = function(){
 			var deferred = $q.defer();
-			$http.get("/api")
-			.success(function(data){
-				deferred.resolve(data);
-			})
-			.error(function(data){
-				deferred.reject(data);
-				console.log("bad");
+			$http.get("/api").success(function(res){
+				deferred.resolve(res);
 			});
 			return deferred.promise;
 		};
 		//----------------------------------------------------------------------------------------------------------------------//
+
 		return o;
 	}
 })();

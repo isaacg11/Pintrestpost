@@ -8,7 +8,7 @@ require('./models/Users');
 require('./models/Photos');
 require('./config/passport');
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-mongoose.connect('mongodb://isaacg11:fresno102@ds031203.mongolab.com:31203/app'); //this line defines the collection name being sent to mongodb and creates the connection to the server.
+mongoose.connect('mongodb://isaacg11:123123@ds031203.mongolab.com:31203/app'); //this line defines the collection name being sent to mongodb and creates the connection to the server.
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 var userRoutes = require('./routing/userRoutes');
 var photoRoutes = require("./routing/photoRoutes.js");

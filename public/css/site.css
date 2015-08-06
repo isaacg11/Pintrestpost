@@ -87,15 +87,15 @@
 
 
 .picpageimg {
-/*	background-image: url("http://server1.homivoon.com/images/static.tumblr.com/8xwvkgq/83Jm0uveb/wood.pngbackground-position-x:50%");
-*/background-position-y:50%;
-background-size: cover;
-width: 100%;
-height: 100%;
-position: fixed;
-left: 0;
-top:0;
-z-index: -10;
+	background-image: url("http://images.wisegeek.com/red-brick-wall.jpg");
+	background-position-y:50%;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top:0;
+	z-index: -10;
 }
 
 

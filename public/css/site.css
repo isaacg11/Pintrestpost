@@ -16,8 +16,8 @@
 }
 
 .loginImage {
-/*	background-image: url(http://i203.photobucket.com/albums/aa93/wakebabe414/nature-wallpaper.jpg);
-*/	background-position-x:50%;
+	background-image: url(http://i203.photobucket.com/albums/aa93/wakebabe414/nature-wallpaper.jpg);
+	background-position-x:50%;
 	background-position-y:50%;
 	background-size: cover;
 	position: fixed;
@@ -87,8 +87,8 @@
 
 
 .picpageimg {
-/*	background-image: url(http://i203.photobucket.com/albums/aa93/wakebabe414/nature-wallpaper.jpg);
-*/	background-position-x:50%;
+	background-image: url(http://i203.photobucket.com/albums/aa93/wakebabe414/nature-wallpaper.jpg);
+	background-position-x:50%;
 	background-position-y:50%;
 	background-size: cover;
 	width: 100%;

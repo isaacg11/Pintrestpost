@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon -e js,html server.js & gulp watch"
+    
     },
     "license": "MIT",
     "dependencies": {
@@ -30,3 +31,4 @@
         "gulp-uglify": "^1.2.0"
       }
     }
+

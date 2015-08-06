@@ -1,9 +1,9 @@
 
 
-.header {
+h1 {
 	text-align: center;
 	font-family: Pacifico;
-	font-size: 10em;
+	font-size: 8em;
 	color: #fff;
 	text-shadow: -2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000;
 	margin-top: 20px;
@@ -12,8 +12,21 @@
 	line-height: 1.1;
 	margin-right:0px;
 	display: block;
-
+	margin-top: 200px;
 }
+h4 {
+	font-family: Pacifico;
+	font-size: 2em;
+}
+
+#photoURL {
+	margin-left: 400px;
+}
+
+#photos {
+	margin-left: 80px;
+}
+
 
 .loginImage {
 	background-image: url(http://i203.photobucket.com/albums/aa93/wakebabe414/nature-wallpaper.jpg);
@@ -73,10 +86,13 @@
 }
 
 #imginput {
-	margin:auto;
-	margin-left: 100px;
 	width: 700px;
 	margin-top: 30px;
+}
+
+.urlInput {
+	margin: auto;
+	width: 800px;
 }
 
 #submitbutton {
@@ -84,10 +100,12 @@
 	margin-top: 30px;
 }
 
-
+#username {
+	font-size: 1.5em;
+}
 
 .picpageimg {
-	background-image: url(http://server1.homivoon.com/images/static.tumblr.com/8xwvkgq/83Jm0uveb/wood.png);
+	background-image: url(http://static.tumblr.com/8xwvkgq/83Jm0uveb/wood.png);
 	background-position-x:50%;
 	background-position-y:50%;
 	background-size: cover;
@@ -118,6 +136,10 @@
 	column-count: 3;
 	column-gap: 15px;
 	column-fill: auto;
+}
+
+#logout {
+	cursor: pointer;
 }
 
 .pin {

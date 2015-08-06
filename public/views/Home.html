@@ -73,7 +73,7 @@
 			<br />
 			<div id="wrapper">
 				<div id="columns">
-					<div class="pin" ng-repeat="p in vm.photo">
+					<div class="pin" ng-repeat="p in vm.photo | orderBy: '-dateCreated'">
 						<br />
 						<img class="img-responsive img-rounded" ng-src="{{p.photoURL}}"/>
 						<textarea placeholder="Write comments here..."></textarea>

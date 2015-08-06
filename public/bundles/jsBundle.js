@@ -30,11 +30,10 @@
 		vm.photo = [];
 		vm.status = userFactory.status;
 		vm.user = {};
-		vm.login = login;//this line is declaring a variable 'vm.login' equal to 'login'.
 		vm.deletePhoto = function(photo) {
 			HomeFactory.deletePhoto(photo).then(function(data){
 				console.log(data);
-			});;
+			});
 		//------------------------------------------------------------------------------------------------------------------------//
 		vm.addPhoto = function () {
 			HomeFactory.addNewPhoto(vm.photoinfo).then(function(data){ //this line says to activate the func. addNewPhoto in the HomeFactory.
@@ -48,14 +47,14 @@
 		});
 		//------------------------------------------------------------------------------------------------------------------------//
 		
-		function login() {
+		vm.login =function() {
 			userFactory.login(vm.user).then(function(){
 				$state.go('Home');
 			});
-		}
+		};
 
-	}
-
+	};
+}
 
 })();
 (function() {

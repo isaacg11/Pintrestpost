@@ -24,12 +24,12 @@ h4 {
 }
 
 #photos {
-	margin-left: 80px;
+	margin-left: 400px;
 }
 
 
 .loginImage {
-	background-image: url(http://i203.photobucket.com/albums/aa93/wakebabe414/nature-wallpaper.jpg);
+	background-image: url("http://i203.photobucket.com/albums/aa93/wakebabe414/nature-wallpaper.jpg");
 	background-position-x:50%;
 	background-position-y:50%;
 	background-size: cover;
@@ -102,6 +102,7 @@ h4 {
 
 #username {
 	font-size: 1.5em;
+	cursor: default;
 }
 
 .picpageimg {
@@ -122,7 +123,6 @@ h4 {
 	width: 90%;
 	max-width: 1700px;
 	min-width: 800px;
-
 	margin: 50px auto;
 }
 
@@ -142,6 +142,7 @@ h4 {
 	cursor: pointer;
 }
 
+
 .pin {
 	display: inline-block;
 	background: #FEFEFE;
@@ -152,7 +153,6 @@ h4 {
 	-moz-column-break-inside: avoid;
 	column-break-inside: avoid;
 	padding: 15px;
-	padding-bottom: 5px;
 	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
 	opacity: 1;
 	
@@ -167,7 +167,6 @@ h4 {
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 15px;
 	margin-bottom: 5px;
-	margin-top: 10px;
 }
 
 .pin p {

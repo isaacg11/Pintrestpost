@@ -4,6 +4,7 @@
   "description": "An application for the Coder Camps FullStack JS course",
   "main": "server.js",
   "scripts": {
+
     "start": "nodemon -e js,html server.js & gulp watch"
     
     },

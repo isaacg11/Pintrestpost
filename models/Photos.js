@@ -5,6 +5,7 @@ var photoSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	dateCreated:Date,
 	dateDeleted: {
 		type: Date,
 		default: null

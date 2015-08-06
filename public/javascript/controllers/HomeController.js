@@ -10,7 +10,8 @@
 		vm.photo = [];
 		vm.status = userFactory.status;
 		vm.user = {};
-		vm.login = login;//this line is declaring a variable 'vm.login' equal to 'login'.
+		vm.login = login;
+		
 		vm.deletePhoto = function(photo) {
 			HomeFactory.deletePhoto(photo).then(function(data){
 				vm.photo = data;

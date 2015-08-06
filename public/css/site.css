@@ -16,7 +16,7 @@
 }
 
 .loginImage {
-	background-image: url("http://c.fastcompany.net/multisite_files/fastcompany/poster/2014/01/3025003-poster-p-dog-2.jpg");
+	background-image: url("http://i203.photobucket.com/albums/aa93/wakebabe414/nature-wallpaper.jpg");
 	background-position-x:50%;
 	background-position-y:50%;
 	background-size: cover;
@@ -87,16 +87,15 @@
 
 
 .picpageimg {
-/*	background-image: url('nature-wallpaper.jpg');
-*/	background-position-x:50%;
-background-position-y:50%;
-background-size: cover;
-width: 100%;
-height: 100%;
-position: fixed;
-left: 0;
-top:0;
-z-index: -10;
+	background-image: ("urlhttp://server1.homivoon.com/images/static.tumblr.com/8xwvkgq/83Jm0uveb/wood.png*/background-position-x:50%");
+	background-position-y:50%;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top:0;
+	z-index: -10;
 }
 
 

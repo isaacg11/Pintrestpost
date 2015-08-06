@@ -60,7 +60,7 @@
 			</div>
 
 			<!-- picture body here -->
-			<div class="picpageimg"></div>
+			<div class="picpageimg"></div>d
 			<h3 align="center"><u>Enter Photo URL</u></h3>
 
 			<form ng-submit="vm.addPhoto()" class="form-inline">
@@ -71,18 +71,20 @@
 			</form>
 			<br />
 			<br />
-			<div id="masonry" class="imgRow">
-				<div class="col-sm-4 image-container " ng-repeat="p in vm.photo">
-					<img id="img" class="img-responsive img-rounded" ng-src="{{p.photoURL}}"/>
-					<p></p>
-
-					<textarea></textarea>
-					<br />
-					<button ng-click="vm.deletePhoto(p)" class="btn btn-danger btn-xs">Remove</button>
-					<br />
-					<br />
+			<div id="wrapper">
+				<div id="columns">
+					<div class="pin" ng-repeat="p in vm.photo">
+						<br />
+						<img class="img-responsive img-rounded" ng-src="{{p.photoURL}}"/>
+						<textarea placeholder="Write comments here..."></textarea>
+						<br />
+						<button ng-click="vm.deletePhoto(p)" class="btn btn-danger btn-xs">Remove</button>
+						<br />
+					</div>
 				</div>
 			</div>
+
+
 		</div>
 
 

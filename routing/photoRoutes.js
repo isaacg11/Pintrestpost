@@ -30,6 +30,7 @@ router.get('/', function(req, res, next) {
 //----------------------------------------------------------------------------------------------------------------------//
 router.post('/addPhoto', function(req, res, next){ 
 	var photo = new Photo(req.body);
+	photo.dateCreated = new Date();
 	photo.save(function(err, photo) {
 		if(err) return next(err);
 		res.send(photo);

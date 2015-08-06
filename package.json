@@ -4,7 +4,8 @@
   "description": "An application for the Coder Camps FullStack JS course",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -e js,html server.js & gulp watch"
+    "Devstart": "nodemon -e js,html server.js & gulp watch",
+    "start": "node server.js"
     },
     "license": "MIT",
     "dependencies": {

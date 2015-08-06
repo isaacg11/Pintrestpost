@@ -87,7 +87,7 @@
 
 
 .picpageimg {
-	background-image: ("urlhttp://server1.homivoon.com/images/static.tumblr.com/8xwvkgq/83Jm0uveb/wood.png*/background-position-x:50%");
+	background-image: url("urlhttp://server1.homivoon.com/images/static.tumblr.com/8xwvkgq/83Jm0uveb/wood.png*/background-position-x:50%");
 	background-position-y:50%;
 	background-size: cover;
 	width: 100%;
